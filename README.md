@@ -9,7 +9,7 @@ run the following to build and execute the test...
 ./mvnw clean spring-boot:run
 ```
 
-the application autmaticaly creates the database schema using JPA. A table called `Aircraft` will be created with the following sql...
+the application automatically creates the database schema using JPA. A table called `Aircraft` will be created with the following sql...
 
 ```
 CREATE TABLE public.aircraft (
@@ -20,7 +20,7 @@ CREATE TABLE public.aircraft (
 )
 ```
 
-a single row insert is attmepted using JPA/Hibernate and fails with the following error when using the `org.hibernate.dialect.CockroachDB201Dialect` but succeeds when using `org.hibernate.spatial.dialect.postgis.PostgisDialect`...
+a single row insert is attempted using JPA/Hibernate and fails with the following error when using the `org.hibernate.dialect.CockroachDB201Dialect` but succeeds when using `org.hibernate.spatial.dialect.postgis.PostgisDialect`...
 ```
 java.lang.IllegalStateException: Failed to execute ApplicationRunner
 	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:798) ~[spring-boot-2.4.0.jar:2.4.0]
@@ -90,3 +90,36 @@ Caused by: org.postgresql.util.PSQLException: ERROR: wkb: unknown byte order: 10
 	... 41 common frames omitted
 ```
 
+## New issues with `5.4.30`
+The new `org.hibernate.spatial.dialect.cockroachdb.CockroachDB202SpatialDialect` incorrectly generates the create table schema...
+
+With `org.hibernate.spatial.dialect.cockroachdb.CockroachDB202SpatialDialect`
+the table is generated like this... 
+
+```
+2021-03-23 09:37:39.468  INFO 81039 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.spatial.dialect.cockroachdb.CockroachDB202SpatialDialect
+Hibernate:
+
+    drop table if exists public.aircraft cascade
+Hibernate:
+
+    create table public.aircraft (
+       id GEOMETRY not null,
+        location geometry,
+        primary key (id)
+    )
+
+```
+
+and fails with...
+
+```
+2021-03-23 09:53:07.908  WARN 81885 --- [           main] com.zaxxer.hikari.pool.ProxyConnection   : HikariPool-1 - Connection org.postgresql.jdbc.PgConnection@224d86d2 marked as broken because of SQLSTATE(0A000), ErrorCode(0)
+
+org.postgresql.util.PSQLException: ERROR: unimplemented: column id is of type geometry and thus is not indexable
+  Hint: You have attempted to use a feature that is not yet implemented.
+See: https://go.crdb.dev/issue-v/35730/v20.2
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2553) ~[postgresql-42.2.19.jar:42.2.19]
+```
+
+As you can see the Aircraft Entity is specifying the `@Id` column as type `UUID` not `geometry`.  The table is properly generated when using the traditional (non-spatial) dialect (`org.hibernate.dialect.CockroachDB201Dialect`)
