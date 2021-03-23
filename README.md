@@ -91,10 +91,9 @@ Caused by: org.postgresql.util.PSQLException: ERROR: wkb: unknown byte order: 10
 ```
 
 ## New issues with `5.4.30`
-The new `org.hibernate.spatial.dialect.cockroachdb.CockroachDB202SpatialDialect` incorrectly generates the create table schema...
+The new `org.hibernate.spatial.dialect.cockroachdb.CockroachDB202SpatialDialect` incorrectly generates the `create table` sql.
 
-With `org.hibernate.spatial.dialect.cockroachdb.CockroachDB202SpatialDialect`
-the table is generated like this... 
+With `org.hibernate.spatial.dialect.cockroachdb.CockroachDB202SpatialDialect` the table is generated like this... 
 
 ```
 2021-03-23 09:37:39.468  INFO 81039 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.spatial.dialect.cockroachdb.CockroachDB202SpatialDialect
