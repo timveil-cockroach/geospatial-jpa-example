@@ -2,8 +2,9 @@ package com.example.demo;
 
 import org.locationtech.jts.geom.Point;
 
-import javax.persistence.*;
-import java.time.OffsetDateTime;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.Objects;
 import java.util.UUID;
 
