@@ -2,7 +2,6 @@ package com.example.demo;
 
 import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.GeometryFactory;
-import org.locationtech.jts.geom.Point;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
@@ -23,6 +22,6 @@ public class DataLoader implements ApplicationRunner {
     public void run(ApplicationArguments args) throws Exception {
         GeometryFactory geometryFactory = new GeometryFactory();
 
-        aircraftRepository.save(new Aircraft(UUID.randomUUID(), geometryFactory.createPoint(new Coordinate(-73.935242, 40.730610))));
+        aircraftRepository.save(new Aircraft(UUID.randomUUID().toString(), geometryFactory.createPoint(new Coordinate(-73.935242, 40.730610))));
     }
 }
