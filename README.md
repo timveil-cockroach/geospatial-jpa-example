@@ -124,4 +124,4 @@ See: https://go.crdb.dev/issue-v/35730/v20.2
 As you can see the Aircraft Entity is specifying the `@Id` column as type `UUID` not `geometry`.  The table is properly generated when using the traditional (non-spatial) dialect (`org.hibernate.dialect.CockroachDB201Dialect`)
 
 ### Workaround
-Since both `geometry` and `uuid` are mapped to the java `SQLType.OTHER` there is type collision occurring.  This will not be properly resolved until Hibernate 6.  In the meantime, migrate UUID columns to their String representation to workaround this issue.
+Since both `geometry` and `uuid` are mapped to the java `SQLType.OTHER` there is type collision occurring.  This will not be properly resolved until Hibernate 6.  In the meantime, migrate UUID columns to their String representation or annotate your UUID column with this ` @Column(columnDefinition = "uuid")` to workaround this issue.

@@ -6,12 +6,14 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.util.Objects;
+import java.util.UUID;
 
 @Entity
 public class Aircraft {
 
     @Id
-    private String id;
+    @Column(columnDefinition = "uuid")
+    private UUID id;
 
     @Column(columnDefinition = "geometry")
     private Point location;
@@ -19,16 +21,16 @@ public class Aircraft {
     public Aircraft() {
     }
 
-    public Aircraft(String id, Point location) {
+    public Aircraft(UUID id, Point location) {
         this.id = id;
         this.location = location;
     }
 
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
