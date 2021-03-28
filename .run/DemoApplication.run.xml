@@ -1,7 +1,7 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="DemoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
     <module name="demo" />
-    <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.demo.DemoApplication" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="io.crdb.geo.jpa.DemoApplication" />
     <option name="ENABLE_LAUNCH_OPTIMIZATION" value="false" />
     <option name="ENABLE_JMX_AGENT" value="false" />
     <option name="ALTERNATIVE_JRE_PATH" />

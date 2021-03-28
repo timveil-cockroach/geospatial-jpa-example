@@ -28,7 +28,7 @@ java.lang.IllegalStateException: Failed to execute ApplicationRunner
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:333) ~[spring-boot-2.4.0.jar:2.4.0]
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1309) ~[spring-boot-2.4.0.jar:2.4.0]
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1298) ~[spring-boot-2.4.0.jar:2.4.0]
-	at com.example.demo.DemoApplication.main(DemoApplication.java:12) ~[classes/:na]
+	at DemoApplication.main(DemoApplication.java:12) ~[classes/:na]
 Caused by: org.springframework.orm.jpa.JpaSystemException: could not execute statement; nested exception is org.hibernate.exception.GenericJDBCException: could not execute statement
 	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.convertHibernateAccessException(HibernateJpaDialect.java:331) ~[spring-orm-5.3.1.jar:5.3.1]
 	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.translateExceptionIfPossible(HibernateJpaDialect.java:233) ~[spring-orm-5.3.1.jar:5.3.1]
@@ -47,7 +47,7 @@ Caused by: org.springframework.orm.jpa.JpaSystemException: could not execute sta
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.1.jar:5.3.1]
 	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:215) ~[spring-aop-5.3.1.jar:5.3.1]
 	at com.sun.proxy.$Proxy61.save(Unknown Source) ~[na:na]
-	at com.example.demo.DataLoader.run(DataLoader.java:26) ~[classes/:na]
+	at DataLoader.run(DataLoader.java:26) ~[classes/:na]
 	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:795) ~[spring-boot-2.4.0.jar:2.4.0]
 	... 5 common frames omitted
 Caused by: org.hibernate.exception.GenericJDBCException: could not execute statement

@@ -1,4 +1,4 @@
-package com.example.demo;
+package io.crdb.geo.jpa;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

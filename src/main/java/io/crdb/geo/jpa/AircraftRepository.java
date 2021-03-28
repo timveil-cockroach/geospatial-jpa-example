@@ -1,4 +1,4 @@
-package com.example.demo;
+package io.crdb.geo.jpa;
 
 import org.springframework.data.repository.CrudRepository;
 

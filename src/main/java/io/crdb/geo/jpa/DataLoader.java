@@ -1,4 +1,4 @@
-package com.example.demo;
+package io.crdb.geo.jpa;
 
 import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.GeometryFactory;
