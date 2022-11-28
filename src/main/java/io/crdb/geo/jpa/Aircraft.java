@@ -1,10 +1,10 @@
 package io.crdb.geo.jpa;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import org.locationtech.jts.geom.Point;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -12,10 +12,9 @@ import java.util.UUID;
 public class Aircraft {
 
     @Id
-    @Column(columnDefinition = "uuid")
     private UUID id;
 
-    @Column(columnDefinition = "geometry")
+    @Column
     private Point location;
 
     public Aircraft() {
